@@ -1,0 +1,36 @@
+---
+dfjt-r001.lab.dfjt.local:
+    hostname: 10.0.0.1
+    groups:
+        - ios
+    data:
+        system:
+            image: 15.1(4r)M
+            uptime: 10
+
+lab-iosv-01.lab.dfjt.local:
+    hostname: lab-iosv-01.lab.dfjt.local
+    groups:
+        - ios
+    data:
+        system:
+            image: 15.4(1)T
+            uptime: 10
+
+lab-iosv-02.lab.dfjt.local:
+    hostname: lab-iosv-02.lab.dfjt.local
+    groups:
+        - ios
+    data:
+        system:
+            image: 15.4(1)T
+            uptime: 100
+
+lab-nxos-01.lab.dfjt.local:
+    hostname: lab-nxos-01.lab.dfjt.local
+    groups:
+        - nxos
+    data:
+        system:
+            image: 7.0(3)I5(2
+            uptime: 60

@@ -1,0 +1,7 @@
+netmiko
+ntc-templates
+genie
+pyats
+nornir
+pylama
+black
