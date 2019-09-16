@@ -4,7 +4,7 @@ This is a basic proof of concept using Nornir and Genie
 to retrieve data from Cisco devices.
 """
 
-
+# Import modules
 import json
 from nornir.plugins.tasks.networking import netmiko_send_command
 from nornir import InitNornir
@@ -13,6 +13,12 @@ import pathlib
 
 
 def n_genie(task, command):
+    """
+    #TODO: Fix documentation
+    :param task:
+    :param command:
+    :return:
+    """
     # Assign command directory to variable
     cmd_dir = "commands"
     # Assign hostname directory to a variable
@@ -55,8 +61,9 @@ def n_cmd_parser():
         }
     )
     """
-    The following block of lists are the supported getters per OS based
-    on the website https://napalm.readthedocs.io/en/latest/support/
+    The following block of lists are the supported parsers per OS based
+    on the website:
+    https://pubhub.devnetcloud.com/media/genie-feature-browser/docs/#/parsers
     """
     ios_commands = [
         "show version",
@@ -66,7 +73,7 @@ def n_cmd_parser():
         "show vtp status",
         "show users",
         "show ntp associations",
-        "cbd",
+        "cbd", # fake command for testing purposes
     ]
 
     nxos_commands = [
@@ -99,11 +106,12 @@ def n_cmd_parser():
         print("** Start Processing Host: " + str(hostname))
         # log_file.write("** Start Processing Host: " + str(hostname) + "\n")
         for cmd in ios_commands:
-            # Start collecting the config getters
+            # Start collecting the command outputs
             print("Processing " + str(cmd) + " Command ... ")
             # log_file.write("Processing " + str(cmd) + " config ... " + "\n")
-            # Execute the collect_config function
+            # Execute the n_genie function
             configs = nr.run(task=n_genie, command=cmd, num_workers=1)
+            # Debur print
             print(configs)
     # NXOS Platform Block
     for host in nxos_devices.inventory.hosts.items():
@@ -113,10 +121,10 @@ def n_cmd_parser():
         print("** Start Processing Host: " + str(hostname))
         # log_file.write("** Start Processing Host: " + str(hostname) + "\n")
         for cmd in nxos_commands:
-            # Start collecting the config getters
+            # Start collecting the command outputs
             print("Processing " + str(cmd) + " Command ... ")
             # log_file.write("Processing " + str(cmd) + " config ... " + "\n")
-            # Execute the collect_config function
+            # Execute the n_genie function
             configs = nr.run(task=n_genie, command=cmd, num_workers=1)
             print(configs)
 
