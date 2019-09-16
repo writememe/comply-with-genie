@@ -73,7 +73,7 @@ def n_cmd_parser():
         "show vtp status",
         "show users",
         "show ntp associations",
-        "cbd", # fake command for testing purposes
+        "cbd",  # fake command for testing purposes
     ]
 
     nxos_commands = [
